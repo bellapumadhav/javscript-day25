@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let main_div = document.createElement("div")
+        document.body.append(main_div);
+        main_div.style.display = "flex";
+        main_div.style.flexWrap = "wrap";
+        main_div.style.justifyContent= "center";
+        main_div.style.gap = "10px"
+
+        let data = fetch("https://679b65f833d316846323b668.mockapi.io/rohit")
+        data.then((x)=>x.json())
+        .then((x)=>{
+
+            let res = x;
+            res.map((x)=>{
+                let poster = document.createElement("img");
+                poster.src = x.poster;
+                poster.style.width = "250px";
+                poster.style.height = "250px";
+                let name = document.createElement("h2")
+                name.innerHTML= x.name;
+                
+                let card = document.createElement("div");
+                card.append(poster, name)
+                 card.style.width = "250px";
+                 card.style.padding = "10px";
+                card.style.border = "3px solid red";
+                card.style.backgroundColor = "orange"
+                main_div.append(card)
+                
+
+
+            })
+
+        })
+    </script>
+</body>
+</html>
